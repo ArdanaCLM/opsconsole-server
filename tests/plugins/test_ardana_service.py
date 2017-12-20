@@ -139,17 +139,17 @@ class ArdSvcUnitTest(TestCase):
         if action == 'POST' and url.endswith('/playbooks/some_playbook'):
             return MockResponse(200,
                                 {
-                                    'pRef': 'ref_1',
+                                    'id': 'ref_1',
                                     'alive': True
                                 })
         elif action == 'GET':
             # we're now in the non-validate section of handling an is_long
             # function so just pretend we're done
-            if url.endswith('model/cp_output/server_info_yml'):
+            if url.endswith('model/cp_output/server_info.yml'):
                 return MockResponse(200, ArdSvcUnitTest.mock_net_data)
             return MockResponse(200,
                                 {
-                                    'pRef': 'ref_1',
+                                    'id': 'ref_1',
                                     'alive': False,     # playbook completed
                                     'code': 0           # playbook return code
                                 })
