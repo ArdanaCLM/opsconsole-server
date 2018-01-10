@@ -15,14 +15,13 @@ python_keystoneclient>=0.11.2,<2.0
 python_neutronclient>=2.3.6,<4.0
 python_novaclient>=2.20.0,<3.0
 python_cinderclient>=1.1.1,<2.0
-python_monascaclient>=1.0.29,<2.0
+python_monascaclient==1.2.0
 python-ironicclient>=0.10.0,<1.0
 # The python_keystoneclient version above uses the deprecated oslo. namespace, which is
 # currently being removed in these oslo packages.  When a more modern python_keystoneclient is
 # used, these version restrictions can be lifted.
 oslo.serialization<1.7
 oslo.i18n>=2.1.0
-oslo.config<=1.14.0
 oslo.utils>=2.0.0
 PyMySQL>=0.6.6
 dogpile.cache>=0.5.4,<1.0

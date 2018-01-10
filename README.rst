@@ -25,13 +25,11 @@ the source tree, used for the variety of ways that the BLL can be launched.
 
 Now there is just a single copy file in this source distribution,
 ``tests/config.py``, that is used for the BLL testing.  The production version
-of `this file`_ is maintained in a separate repo, `ardana/opsconsole-ansible`_.
+of this file is maintained in a separate repo.
 
 In modern versions of pecan (0.8.3. and above), the config file is required to
 be a python file whose name ends with ``.py``, and will fail at startup if it is
 anything else, including ``.conf``.
-
-.. _this file: https://git.suse.provo.cloud/cgit/ardana/opsconsole-ansible/tree/roles/OPS-WEB/templates/ops-console.conf.j2?h=master
 
 Launch environments
 ...................
@@ -55,9 +53,7 @@ There are a number of ways the code can be run:
   In production, the web layer runs in a pecan container under apache, via WSGI.
   The file that is launched is ``app.wsgi``, and it in turn deploys pecan
   and specifies the config file to be used.  Note: ``app.wsgi`` is generated
-  by ansible from a template in the `ardana/opsconsole-ansible`_ project.
-
-.. _ardana/opsconsole-ansible: https://git.suse.provo.cloud/cgit/ardana/opsconsole-ansible/tree/?h=master
+  by ansible from a template.
 
 Config file properties
 ......................
