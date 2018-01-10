@@ -21,12 +21,12 @@ def entry(plugin_name, class_name, file_name=None):
 
 
 setup(
-    name='bll',
+    name='ardana-opsconsole-server',
     version='1.0',
-    author='Hewlett Packard Enterprise Development LP',
+    author='SUSE LLC',
+    url='https://github.com/ArdanaCLM',
     packages=find_packages(exclude=['tests', 'tests.*', 'stubs', 'stubs.*']),
-    license='(c) Copyright 2016 Hewlett Packard Enterprise Development LP'
-            '(c) Copyright 2017 SUSE LLC',
+    license='Apache-2.0',
     include_package_data=True,
     scripts=[],
     description='Business Logic Layer for the Operations Console',
