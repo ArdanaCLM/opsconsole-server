@@ -1,28 +1,26 @@
+# The order of packages is significant, because pip processes them in the order
+# of appearance. Changing the order has an impact on the overall integration
+# process, which may cause wedges in the gate later.
 # (c) Copyright 2015-2016 Hewlett Packard Enterprise Development LP
 # (c) Copyright 2017-2018 SUSE LLC
-pbr>=3.1.0,<3.2.0
-Mako>=1.0.0,<2.0
-MarkupSafe>=0.23,<1.0
-WebOb>=1.4,<2.0
+pbr!=2.1.0,>=2.0.0 # Apache-2.0
+Mako>=0.4.0 # MIT
+WebOb>=1.7.1 # MIT
+requests>=2.14.2 # Apache-2.0
+pecan!=1.0.2,!=1.0.3,!=1.0.4,!=1.2,>=1.0.0 # BSD
 argparse==1.2.1
 simplegeneric==0.8.1
-requests>=2.5,<3.0
-future>=0.16
-pecan>=1.0,<2.0
 Pykka==1.2.0
-stevedore>=1.1.0,<2.0
-python_keystoneclient>=0.11.2,<2.0
-python_neutronclient>=2.3.6,<4.0
-python_novaclient>=2.20.0,<3.0
-python_cinderclient>=1.1.1,<2.0
-python_monascaclient==1.2.0
-python-ironicclient>=0.10.0,<1.0
-# The python_keystoneclient version above uses the deprecated oslo. namespace, which is
-# currently being removed in these oslo packages.  When a more modern python_keystoneclient is
-# used, these version restrictions can be lifted.
-oslo.serialization<1.7
-oslo.i18n>=2.1.0
-oslo.utils>=2.0.0
-PyMySQL>=0.6.6
-dogpile.cache>=0.5.4,<1.0
-pyOpenSSL>=0.15.1
+oslo.serialization!=2.19.1,>=1.10.0 # Apache-2.0
+oslo.i18n!=3.15.2,>=2.1.0 # Apache-2.0
+oslo.utils>=3.20.0 # Apache-2.0
+PyMySQL>=0.7.6 # MIT License
+dogpile.cache>=0.6.2 # BSD
+pyOpenSSL>=0.14 # Apache-2.0
+stevedore>=1.20.0 # Apache-2.0
+python-keystoneclient>=3.8.0 # Apache-2.0
+python-neutronclient>=6.3.0 # Apache-2.0
+python-novaclient>=9.0.0 # Apache-2.0
+python-cinderclient>=3.1.0 # Apache-2.0
+python-monascaclient>=1.7.0 # Apache-2.0
+python-ironicclient>=1.14.0 # Apache-2.0

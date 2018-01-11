@@ -1,0 +1,5 @@
+.copyrightignore
+.rsync-filter
+requirements.txt
+test-requirements.txt
+tox.ini
