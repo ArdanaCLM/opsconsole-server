@@ -28,8 +28,8 @@ class ArdSvc(SvcBase):
     def __init__(self, *args, **kwargs):
         super(ArdSvc, self).__init__(*args, **kwargs)
 
-        url = self.token_helper.get_service_endpoint('ardana')
-        self.base_url = "/".join([url.strip(), 'api/v1'])
+        url = self.token_helper.get_service_endpoint('lifecycle')
+        self.base_url = "/".join([url.strip(), 'api/v2'])
 
         if not self.operation:
             self.operation = 'do_path_operation'
@@ -118,7 +118,7 @@ class ArdSvc(SvcBase):
             "operation": "get_network_data"
 
         """
-        server_info = self._request('model/cp_output/server_info_yml')
+        server_info = self._request('model/cp_output/server_info.yml')
 
         agg_networks = {}
         for host_data in server_info.values():
@@ -161,7 +161,7 @@ class ArdSvc(SvcBase):
             resp = self._request(req_path,
                                  body=self.data,
                                  action='POST')
-            self.ref_id = resp['pRef']
+            self.ref_id = resp['id']
             self.status_path = 'plays/' + self.ref_id
             self.update_job_status(resp, 25)
             return
