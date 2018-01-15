@@ -320,7 +320,11 @@ class NovaSvc(service.SvcBase):
             # flavors tell us cpu/memory/disk allocated to the instance
             flavor_list = client.flavors.list(is_public=None, detailed=True)
             flavor_dict = {flavitem.id: flavitem for flavitem in flavor_list}
-            image_list = client.images.list()
+            image_list = []
+            if hasattr(client, 'images'):
+              image_list = client.images.list()
+            elif hasattr(client, 'glance'):
+              image_list = client.glance.list()
             image_dict = {imgitem.id: imgitem for imgitem in image_list}
 
             for nova_inst in server_list:
