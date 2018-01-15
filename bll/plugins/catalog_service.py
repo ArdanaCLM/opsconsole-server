@@ -111,10 +111,8 @@ class CatalogSvc(service.SvcBase):
         old_cplanes = nc['nova-compute']['control_planes']
         new_cplanes = {}
         for hyp in hyp_list:
-            # Using the hypervisor's 'name' doesn't always work because eon
-            # uses a strange name like "domain-c7.xxxxx" that doesn't match
-            # what Ardana uses in its model.  The hypervisor's service_host
-            # appears to match what's in the model and works with kvm hosts,
+            # Use the hypervisor's service_host, which appears to match what is
+            # in the model and works with kvm hosts,
             ch_name = hyp['service_host']
 
             ch_region = hyp['region']

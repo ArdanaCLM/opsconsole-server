@@ -11,10 +11,6 @@ class IronicSvc(service.SvcBase):
     """
     The ``target`` value for this plugin is ``ironic``. See :ref:`rest-api`
     for a full description of the request and response formats.
-
-    This really should be called the baremetal service, but unfortunately,
-    there is already one with that name containing services that really
-    belong in eon_service.
     """
 
     def __init__(self, *args, **kwargs):

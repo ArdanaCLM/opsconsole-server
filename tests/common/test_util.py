@@ -310,8 +310,3 @@ class Test(test_util.TestCase):
 
         self.assertEquals(len(txn_id) + 9, len(child1))
         self.assertEquals(len(child2), len(child1))
-
-
-# Set the application environment
-def set_app_env(env):
-    conf['env'] = env

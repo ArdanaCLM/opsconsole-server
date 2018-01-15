@@ -60,11 +60,9 @@ setup(
 
     entry_points={
         'bll.plugins': [
-            entry("baremetal", "BaremetalSvc"),
             entry("catalog", "CatalogSvc"),
             entry("cinder", "CinderSvc"),
             entry("compute", "ComputeSvc"),
-            entry("eon", "EONSvc"),
             entry("eula", "EulaSvc"),
             entry("ardana", "ArdSvc"),
             entry("ironic", "IronicSvc"),
@@ -73,7 +71,6 @@ setup(
             entry("objectstorage_summary", "ObjectStorageSummarySvc"),
             entry("preferences", "PreferencesSvc"),
             entry("user_group", "UserGroupSvc"),
-            entry("vcenters", "IntegratedToolsSvc", "integratedtools_service"),
         ],
     },
 
