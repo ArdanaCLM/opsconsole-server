@@ -3,7 +3,7 @@
 from contextlib import contextmanager
 from bll import api
 from bll.api import auth_token
-from bll.api.auth_token import verify_https
+from bll.api.auth_token import verify
 from bll.api.request import BllRequest
 from bll.common import job_status
 from keystoneclient.v3 import client as ksclient3
@@ -71,7 +71,7 @@ def _functional_lacking(requires=None):
             try:
                 auth_ref = get_auth_ref_from_env()
                 services = ksc.Client(auth_ref=auth_ref,
-                                      verify=verify_https()).services.list()
+                                      verify=verify()).services.list()
             except:
                 pass
 
@@ -303,7 +303,7 @@ def create_user(project_roles={}, domain_roles={}):
                                     username=os.getenv('OS_USERNAME'),
                                     password=os.getenv('OS_PASSWORD'),
                                     domain_name='default',
-                                    verify=verify_https())
+                                    verify=verify())
 
     username = "test_" + randomidentifier()
     password = randomidentifier()

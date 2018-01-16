@@ -70,7 +70,7 @@ def login(username, password, domain='Default'):
                        user_domain_name=domain,
                        unscoped=True)
     unscoped_session = session.Session(auth=auth, user_agent=USER_AGENT,
-                                       verify=verify_https())
+                                       verify=verify())
     try:
         unscoped_token = unscoped_session.get_token()
     except Exception as e:
@@ -95,7 +95,7 @@ def get_appropriate_auth_ref(token):
     LOG.debug("Obtaining unscoped keystone client with token")
     auth = v3.Token(auth_url=get_auth_url(), token=token, unscoped=True)
     sess = session.Session(auth=auth, user_agent=USER_AGENT,
-                           verify=verify_https())
+                           verify=verify())
     ks = ksclient3.Client(session=sess, user_agent=USER_AGENT)
 
     project_list = [t.name for t in ks.projects.list(user=sess.get_user_id())]
@@ -110,7 +110,7 @@ def get_appropriate_auth_ref(token):
         ks = ksclient3.Client(token=token,
                               auth_url=get_auth_url(),
                               domain_name='default',
-                              verify=verify_https())
+                              verify=verify())
         role_names = ks.auth_ref.role_names
 
     except Exception:
@@ -173,7 +173,7 @@ def _get_auth_ref(token, project_name, domain_name='Default'):
                     project_domain_name=domain_name,
                     token=token)
     project_session = session.Session(auth=auth,
-                                      verify=verify_https(),
+                                      verify=verify(),
                                       user_agent=USER_AGENT)
 
     # Trigger the generation of the new token
@@ -208,7 +208,7 @@ def _get_session(token):
                     project_id=auth_ref.project_id,
                     token=token)
     return session.Session(auth=auth, user_agent=USER_AGENT,
-                           verify=verify_https())
+                           verify=verify())
 
 
 def _get_domain_session(token, domain_name=None):
@@ -220,18 +220,20 @@ def _get_domain_session(token, domain_name=None):
                     domain_id=domain_name,
                     token=token)
     return session.Session(auth=auth, user_agent=USER_AGENT,
-                           verify=verify_https())
+                           verify=verify())
 
 
 warnings_filtered = False
 
 
-def verify_https():
+def verify():
 
     global warnings_filtered
 
     # Perform SSL verification unless explicitly configured otherwise
-    verify = not get_conf("insecure")
+    insecure = get_conf("insecure")
+    verify = False if insecure else get_conf("keystone.cacert")
+
     # If SSL verification is turned off, just log the insecure warning once
     #   instead of repeating it ad nauseum.  Use warnings_filtered
     #   boolean to avoid repeatedly adding a filter to the warnings system
