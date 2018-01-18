@@ -26,4 +26,3 @@ oslo.utils>=2.0.0
 PyMySQL>=0.6.6
 dogpile.cache>=0.5.4,<1.0
 pyOpenSSL>=0.15.1
--e git://github.com/hpe-helion-os/python-hpeeonclient.git#egg=eonclient

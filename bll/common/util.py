@@ -102,34 +102,6 @@ def empty(value):
     return False
 
 
-def _get_app_env():
-    return conf.get('env', 'stdcfg')
-
-
-def is_stdcfg():
-    """
-    Determines whether the BLL is running in a stdcfg environment or legacy
-    environment based on the presence of an entry in the config file that
-    indicates this.
-
-    WARNING
-
-    It is preferable to avoid using this function in the BLL, as well as its 
-    sibling is_legacy(), and instead rely in the presence of services to 
-    dictate logic.
-    """
-    return _get_app_env() == "stdcfg"
-
-
-def is_legacy():
-    """
-    WARNING
-
-    See description of is_stdcfg above.
-    """
-    return _get_app_env() == "legacy"
-
-
 def get_conf(key, default=None):
     """
     Traverse through the levels of the config file to obtain the specified

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bll 1.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-11-21 13:58-0800\n"
+"POT-Creation-Date: 2018-01-16 08:43-0800\n"
 "PO-Revision-Date: 2016-10-06 12:46-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -19,163 +19,70 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.5.1\n"
 
-#: bll/common/exception.py:18
+#: bll/common/exception.py:19
 msgid "An unknown exception occurred"
 msgstr ""
 
-#: bll/common/exception.py:22
+#: bll/common/exception.py:23
 msgid "Invalid request"
 msgstr ""
 
-#: bll/common/exception.py:26
+#: bll/common/exception.py:27
 msgid "Authentication Failed to Backend Identity"
 msgstr ""
 
-#: bll/plugins/baremetal_service.py:70
-msgid "Baremetal registered successfully"
-msgstr ""
-
-#: bll/plugins/baremetal_service.py:99
-msgid "Baremetal unregistered successfully"
-msgstr ""
-
-#: bll/plugins/baremetal_service.py:164
-msgid "Baremetal provisioned successfully"
-msgstr ""
-
-#: bll/plugins/baremetal_service.py:167
-msgid "Provisioning baremetal failed"
-msgstr ""
-
-#: bll/plugins/baremetal_service.py:196
-msgid "Baremetal updated successfully"
-msgstr ""
-
-#: bll/plugins/compute_service.py:221
-msgid "{0}{1} - Could not get Ardana model for Resource"
-msgstr ""
-
-#: bll/plugins/eon_service.py:144
-msgid "Invalid Resource Type Specified"
-msgstr ""
-
-#: bll/plugins/eon_service.py:155
-msgid "Activation Failed for Resource with {0},{1}"
-msgstr ""
-
-#: bll/plugins/eon_service.py:282
-msgid "Could not get Activation Template from EON"
-msgstr ""
-
-#: bll/plugins/eon_service.py:296
-msgid ""
-"Invalid Resource Type Specified or Empty/Invalid Network Configuration "
-"was sent"
-msgstr ""
-
-#: bll/plugins/eon_service.py:348
-msgid "Resource not found in eon"
-msgstr ""
-
-#: bll/plugins/ardana_service.py:178
+#: bll/plugins/ardana_service.py:181
 msgid "Unknown error occurred, please refer to the following ardana log: {}"
 msgstr ""
 
-#: bll/plugins/integratedtools_service.py:154
-msgid "vCenter registration failed: no OneViews found"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:227
-msgid "vCenter registration failed: {}"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:237 bll/plugins/service.py:168
-msgid "{0}: {1}"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:273
-msgid "Invalid or incomplete vCenter id passed"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:279
-msgid "vCenter is not registered"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:321
-msgid "{0}. vCenter {1} is partially updated"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:338
-msgid "Could not fetch vmdk block device for vCenter to update"
-msgstr ""
-
-#: bll/plugins/integratedtools_service.py:462
-msgid "Failed to remove driver from backend"
-msgstr ""
-
-#: bll/plugins/monitor_service.py:398
+#: bll/plugins/monitor_service.py:400
 msgid ""
 "cannot filter on dimension_name_filter: {} without a group_by on "
 "dimension_name"
 msgstr ""
 
-#: bll/plugins/nova_service.py:468
+#: bll/plugins/nova_service.py:447
 msgid "Could not find service to delete"
 msgstr ""
 
-#: bll/plugins/nova_service.py:470
+#: bll/plugins/nova_service.py:449
 msgid "Executed nova service delete on service {}"
 msgstr ""
 
-#: bll/plugins/nova_service.py:510
+#: bll/plugins/nova_service.py:489
 msgid "instance {} deleted"
 msgstr ""
 
-#: bll/plugins/preferences_service.py:52
+#: bll/plugins/preferences_service.py:53
 msgid "User {} does not exist"
 msgstr ""
 
-#: bll/plugins/preferences_service.py:80
+#: bll/plugins/preferences_service.py:81
 msgid "Cannot update non-existent user {}"
 msgstr ""
 
-#: bll/plugins/service.py:183
+#: bll/plugins/service.py:169
+msgid "{0}: {1}"
+msgstr ""
+
+#: bll/plugins/service.py:184
 msgid "Operation and action missing"
 msgstr ""
 
-#: bll/plugins/service.py:189
+#: bll/plugins/service.py:190
 msgid "Unsupported operation: {}"
 msgstr ""
 
-#: bll/plugins/service.py:457
+#: bll/plugins/service.py:458
 msgid "Timed out waiting for {}"
 msgstr ""
 
-#: bll/plugins/service.py:475
+#: bll/plugins/service.py:476
 msgid "Failure calling {} service"
 msgstr ""
 
-#: bll/plugins/user_group_service.py:83
+#: bll/plugins/user_group_service.py:86
 msgid "Invalid project: {}"
 msgstr ""
-
-#~ msgid "OneView registration complete"
-#~ msgstr ""
-
-#~ msgid "ICSP {0} is not registered with {1}"
-#~ msgstr ""
-
-#~ msgid "Cluster creation failed"
-#~ msgstr ""
-
-#~ msgid "Unable to locate eon resource corresponding to cluster_id {}"
-#~ msgstr ""
-
-#~ msgid "ICSP %s update failed for %s"
-#~ msgstr ""
-
-#~ msgid "Invalid device type"
-#~ msgstr ""
-

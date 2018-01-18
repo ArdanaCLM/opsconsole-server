@@ -18,11 +18,11 @@ from bll.api.auth_token import TokenHelpers
 from bll.api.request import BllRequest
 from bll.plugins import compute_service
 from mock import patch
-from tests.util import TestCase, get_mock_token, randomurl
 from random import random
+from tests.util import TestCase, get_mock_token, randomurl
 
-import mock
 import copy
+import mock
 
 
 def call_service_test_utilization(target=None, operation=None, data=None):
@@ -184,8 +184,6 @@ class TestComputeSvc(TestCase):
             operation='get_compute_list',
             auth_token=get_mock_token()))
 
-        svc._update_eon_with_monasca_status = mock.Mock()
-
         reply = svc.handle()
         self.assertEqual(api.COMPLETE, reply[api.STATUS])
         self.assertEqual(1, len(reply['data']))
@@ -211,94 +209,6 @@ class TestComputeSvc(TestCase):
             self.assertNotEqual(host['type'], 'ironic')
 
     @patch('bll.api.auth_token.TokenHelpers.get_service_endpoint',
-           return_value=True)
-    def test_get_resource_details(self, *_):
-        request = {
-            api.TARGET: 'compute',
-            api.ACTION: 'GET',
-            api.AUTH_TOKEN: get_mock_token(),
-            api.DATA: {
-                api.OPERATION: 'details',
-                api.VERSION: 'v1',
-                api.DATA: {
-                    "id": "e90f7f6f-c75f-4830-8f47-e0af2851b132",
-                    "type": "esxcluster"
-                }
-            }
-        }
-
-        svc = compute_service.ComputeSvc(bll_request=BllRequest(request))
-        # Mock out invocations of call_service
-        svc.call_service = mock.MagicMock()
-        reply = svc.handle()
-        self.assertEqual(reply[api.STATUS], api.COMPLETE)
-
-    @patch('bll.plugins.service.SvcBase.call_service',
-           side_effect=call_service)
-    @patch('bll.api.auth_token.TokenHelpers.get_service_endpoint',
-           return_value=True)
-    def test_update_eon_with_stats(self, *_):
-        # example of what comes back from eon
-        compute_list = [
-            {
-                "cluster_moid": "domain-c84",
-                "id": "ebe3e327-1e02-4feb-bfed-7eaa410bb5c9",
-                "ip_address": "UNSET",
-                "meta_data": [
-                    {
-                        "id": "311c3abc-15c6-4156-bf61-38ea304e8675",
-                        "name": "hypervisor_id",
-                        "value": "1"
-                    },
-                    {
-                        "id": "7063a114-469f-4591-8315-e042801235ca",
-                        "name": "network_properties",
-                        "value": "network_properties_blah"
-                    },
-                    {
-                        "id": "7173ccad-c4c7-4b76-b1e9-91b6da330af6",
-                        "name": "cluster_moid",
-                        "value": "domain-c3135"
-                    },
-                    {
-                        "id": "ca70eaac-8bd9-411d-9c98-d90d7812b5a1",
-                        "name": "ardana_properties",
-                        "value": "ardana_properties_blah"
-                    }
-                ],
-                "hypervisor_hostname":
-                    "domain-c84.68bb08ca-07ed-4b9d-835f-1815a5f15a85",
-                "name": "Compute-08A",
-                "password": "UNSET",
-                "port": "UNSET",
-                "region": "my_region",
-                "resource_mgr_id": "68bb08ca-07ed-4b9d-835f-1815a5f15a85",
-                "state": "activated",
-                "type": "esxcluster",
-                "username": "UNSET"
-            }
-        ]
-
-        request = {
-            api.TARGET: 'compute',
-            api.ACTION: 'GET',
-            api.AUTH_TOKEN: 'blah',
-            api.DATA: {
-                api.OPERATION: 'get_compute_list'
-            }
-        }
-
-        svc = compute_service.ComputeSvc(bll_request=BllRequest(request))
-        svc._filter_eon_compute_node = mock.Mock(return_value=compute_list)
-
-        reply = svc.handle()
-        self.assertEqual(api.COMPLETE, reply[api.STATUS])
-        self.assertFalse('meta_data' in reply[api.DATA][0])
-        self.assertEquals(reply[api.DATA][0]['network_properties'],
-                          'network_properties_blah')
-        self.assertEquals(reply[api.DATA][0]['ping_status'], 'up')
-
-    @patch('bll.api.auth_token.TokenHelpers.get_service_endpoint',
            return_value=randomurl())
     def test_get_compute_details_legacy(self, *_):
         request = {
@@ -322,7 +232,7 @@ class TestComputeSvc(TestCase):
         self.assertEqual(api.COMPLETE, reply[api.STATUS])
 
     @patch.object(TokenHelpers, 'get_service_endpoint', return_value=None)
-    def test_get_compute_details_stdcfg(self, a):
+    def test_get_compute_details(self, a):
         request = {
             api.TARGET: 'compute',
             api.ACTION: 'GET',
