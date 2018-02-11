@@ -1,5 +1,5 @@
 # (c) Copyright 2015-2017 Hewlett Packard Enterprise Development LP
-# (c) Copyright 2017 SUSE LLC
+# (c) Copyright 2017-2018 SUSE LLC
 
 import logging
 from datetime import datetime, timedelta
