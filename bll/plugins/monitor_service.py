@@ -1,5 +1,5 @@
 # (c) Copyright 2015-2017 Hewlett Packard Enterprise Development LP
-# (c) Copyright 2017 SUSE LLC
+# (c) Copyright 2017-2018 SUSE LLC
 
 import logging
 
@@ -56,13 +56,17 @@ class MonitorSvc(SvcBase):
         """
 
         monasca_url = self.token_helper.get_service_endpoint('monitoring')
+        keystone_url = self.token_helper.get_service_endpoint('identity') + 'v3'
         # All monasca data is stored in the admin project, so get a token
         # to that project
         token = self.token_helper.get_token_for_project('admin')
 
-        return msclient.Client(api_version,
-                               monasca_url,
+        return msclient.Client(api_version=api_version,
+                               endpoint=monasca_url,
                                token=token,
+                               auth_url=keystone_url,
+                               project_name='admin',
+                               project_domain_name='Default',
                                insecure=get_conf("insecure"),
                                user_agent=api.USER_AGENT)
 
